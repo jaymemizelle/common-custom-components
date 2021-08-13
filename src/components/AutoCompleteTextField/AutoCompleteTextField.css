@@ -1,0 +1,20 @@
+.autoCompleteList {
+    list-style-type: none;
+    text-align: left;
+    border: solid 1px #ced4da;
+    border-radius: 0.25rem;
+    border-top: none;
+    padding: 0;
+}
+
+.autoCompleteList li {
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #ced4da;
+    padding-left: 10px;
+}
+
+.autoCompleteList li:hover {
+    background-color: aliceblue;
+}
