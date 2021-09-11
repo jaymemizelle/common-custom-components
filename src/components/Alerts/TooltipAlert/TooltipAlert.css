@@ -1,0 +1,32 @@
+.tooltipAlert {
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 5px;
+    color: #333;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.tooltipAlert:after,
+.tooltipAlert:before {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    top: -10px;
+    content: '';
+    right: 70%;
+    margin-right: -10px;
+    position: absolute;
+}
+
+/* Styling for second triangle (border) */
+
+.tooltipAlert:before {
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid;
+    border-bottom-color: inherit; /* Can't be included in the shorthand to work */
+    top: -13px;
+    margin-right: -13px;
+}
