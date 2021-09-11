@@ -3,7 +3,7 @@
 # Common Custom Components
 
 ## Description
-This is a React Project designed to house common custom-built react components that can be re-used at will.
+This is a React Project designed to house common custom react components built with react-bootstrap that can be re-used at will.
 
 ## Table of Contents
   - [Installation](#installation)
@@ -26,6 +26,7 @@ As a developer, feel free to copy and paste the code straight from this GitHub r
 * JavaScript 
 * CSS3 
 * HTML5
+* Bootstrap/ React-Bootstrap
 
 ## License
 
