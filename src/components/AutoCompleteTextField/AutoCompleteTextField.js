@@ -1,4 +1,140 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Form } from "react-bootstrap";
+import "./AutoCompleteText.css";
+
+function AutoCompleteText({
+  required,
+  id,
+  label,
+  suggestionList,
+  value,
+  placeholder,
+  monitorValue,
+  setTextChanged,
+  crmId,
+}) {
+  const [suggestions, setSuggestions] = useState([]);
+  const [text, setText] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [cursor, setCursor] = useState(-1);
+
+  const ourSuggestions = suggestionList;
+
+  const searchContainer = useRef(null);
+
+  const showSuggestions = () => setIsVisible(true);
+
+  const hideSuggestions = () => setIsVisible(false);
+
+  useEffect(() => {
+    document.addEventListener("keypress", (e) => {
+      if (e.which == "13") {
+        e.preventDefault();
+      }
+    });
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (e) => {
+    if (
+      searchContainer.current &&
+      !searchContainer.current.contains(e.target)
+    ) {
+      hideSuggestions();
+    }
+  };
+
+  const handleKeyboardNavigation = (e) => {
+    if (e.key === "ArrowDown") {
+      isVisible
+        ? setCursor((c) => (c < suggestions.length - 1 ? c + 1 : c))
+        : showSuggestions();
+    }
+    if (e.key === "ArrowUp") {
+      setCursor((c) => (c > 0 ? c - 1 : 0));
+    }
+    if (e.key === "Escape") {
+      hideSuggestions();
+    }
+    if (e.key === "Enter" && cursor > -1) {
+      suggestionSelected(suggestions[cursor]);
+      setCursor(-1);
+    }
+  };
+
+  const onTextChanged = (e) => {
+    showSuggestions();
+    const value = e.target.value;
+    let suggestions = [];
+    if (value.length > 0) {
+      let regexValue = value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+      const regex = new RegExp(regexValue, "i");
+      suggestions = ourSuggestions.sort().filter((v) => regex.test(v));
+    }
+    setSuggestions(suggestions);
+    setText(value);
+    monitorValue(value);
+    setTextChanged(true);
+  };
+
+  const suggestionSelected = (selection) => {
+    setText(selection);
+    monitorValue(selection);
+    let suggestions = [];
+    setSuggestions(suggestions);
+    hideSuggestions();
+  };
+
+  const renderSuggestions = () => {
+    if (isVisible === false || suggestions.length === 0 || crmId != null) {
+      return null;
+    }
+    if (isVisible) {
+      return (
+        <ul
+          className={`autoCompleteList ${isVisible ? "visible" : "invisible"}`}
+        >
+          {suggestions.map((item, i) => (
+            <li
+              className={cursor === i ? "isHighlighted" : ""}
+              onClick={() => suggestionSelected(item)}
+              key={i}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
+  return (
+    <Form.Group>
+      <Form.Label>{label}</Form.Label>
+      <Form.Control
+        onClick={() => {
+          setIsVisible(true);
+          renderSuggestions();
+        }}
+        ref={searchContainer}
+        onKeyDown={handleKeyboardNavigation}
+        placeholder={placeholder}
+        autoComplete="off"
+        required={required}
+        id={id}
+        value={value}
+        onChange={onTextChanged}
+        type="text"
+      />
+      {renderSuggestions()}
+    </Form.Group>
+  );
+}
+
+export default AutoCompleteText;import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import "./AutoCompleteTextField.css";
 
