@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Menu() {
   const [shown, setShown] = useState(false);
@@ -34,21 +35,8 @@ function Menu() {
     <div>
       <div className="menu" ref={ref}>
         <div onClick={setShown(!shown)}>...</div>
-        <div
-          className="drop-down-content-menu"
-          style={
-            shown
-              ? {
-                  height: 235,
-                  boxShadow: "0px 2px 10px 5px rgba(117, 117, 117, 0.08)"
-                }
-              : { height: 0 }
-          }
-        >
-          <ul
-            className="alignment"
-            style={shown ? {} : { display: "none" }}
-          >
+        <div>
+          <ul style={shown ? {} : { display: "none" }}>
             <Link to="/my-profile">
               <li>Item1</li>
             </Link>
@@ -61,9 +49,9 @@ function Menu() {
             <Link to="#">
               <li>Item3</li>
             </Link>
-            <div className="horizontal-divider"></div>
+            <hr></hr>
             <a>
-              <span >
+              <span>
                 <li> Last Item</li>
               </span>
             </a>
