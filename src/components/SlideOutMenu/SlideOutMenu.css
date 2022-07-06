@@ -1,0 +1,39 @@
+.slideOutHeader {
+    display: flex;
+    width: 177px;
+    height: 33px;
+    margin: 26px 97px 25px 24px;
+    font-family: "OpenSans", sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #1c2655;
+  }
+  
+  .slideOutMenu {
+    width: 548px;
+    height: 100vh;
+    box-shadow: -1px 0 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+    overflow: scroll;
+    z-index: 1000;
+  }
+  
+  .slideOutMenu.hide {
+    transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+    transform: translate3d(200vw, 0, 0);
+  }
+  
+  .slideOutMenu.show {
+    transform: translate3d(0vw, 0, 0);
+    overflow: hidden;
+  }
+  
