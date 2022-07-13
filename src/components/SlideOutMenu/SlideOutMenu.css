@@ -1,39 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
 .slideOutHeader {
-    display: flex;
-    width: 177px;
-    height: 33px;
-    margin: 26px 97px 25px 24px;
-    font-family: "OpenSans", sans-serif;
-    font-size: 24px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #1c2655;
-  }
-  
-  .slideOutMenu {
-    width: 548px;
-    height: 100vh;
-    box-shadow: -1px 0 4px 0 rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    right: 0;
-    transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
-    overflow: scroll;
-    z-index: 1000;
-  }
-  
-  .slideOutMenu.hide {
-    transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
-    transform: translate3d(200vw, 0, 0);
-  }
-  
-  .slideOutMenu.show {
-    transform: translate3d(0vw, 0, 0);
-    overflow: hidden;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 33px;
+  margin: 26px 20px 13px 20px;
+  font-family: "OpenSans", sans-serif;
+  font-size: 24px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #1c2655;
+}
+
+.slideOutMenu {
+  width: 548px;
+  height: 100vh;
+  box-shadow: -1px 0 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+  overflow: scroll;
+  z-index: 1000;
+}
+
+.slideOutMenu.hide {
+  transition: transform 0.7s cubic-bezier(0, 0.52, 0, 1);
+  transform: translate3d(200vw, 0, 0);
+}
+
+.slideOutMenu.show {
+  transform: translate3d(0vw, 0, 0);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.filterCtas {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cancelBtn {
+  background-color: #fff !important;
+  font-weight: bold;
+  border-radius: 0 !important;
+  color: #63c4ab !important;
+  border: 2px solid #63c4ab !important;
+  margin-right: 10px;
+}
+
+.actionBtn {
+  font-weight: bold;
+  color: #eeeeee;
+  border-radius: 0;
+  font-size: 16px;
+  background-color: #63c4ab;
+  padding: 8px 16px;
+  font-family: "OpenSans", sans-serif;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.filterMenuTitle {
+  height: 22px;
+  margin: 24px 227px 16px 24px;
+  font-family: "OpenSans", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #1c2655;
+}
+
+.divider {
+  width: 500px;
+  height: 1px;
+  margin: 11px 0 5px 22px;
+  transform: rotate(-360deg);
+  background-color: #c4c4c4;
+}
+
+.clearFields {
+  width: 69px;
+  height: 16px;
+  margin: 8px 5px 0 38em;
+  font-family: "OpenSans", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #63c4ab;
+}
+
+.clearFields:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
